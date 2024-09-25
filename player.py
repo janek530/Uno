@@ -1,3 +1,6 @@
+import random
+
+
 class Player:
     def __init__(self, name):
         self.name = name
@@ -18,15 +21,18 @@ class Player:
 
     def has_playable_card(self, current_card):
         for card in self.hand:
-            if card.color == current_card.color or card.value == current_card.value or card.color == 'WILD':
+            if card.color == current_card.color or card.value == current_card.value or card.color == 'WILD' or current_card.color == 'WILD':
                 return True
         return False
 
     def choose_card_to_play(self, current_card):
         for card in self.hand:
-            if card.color == current_card.color or card.value == current_card.value or card.color == 'WILD':
+            if card.color == current_card.color or card.value == current_card.value or card.color == 'WILD' or current_card.color == 'WILD':
                 return card
         return None
+
+    def set_color(self):
+        return random.choice(['BLUE', 'GREEN', 'RED', 'YELLOW'])
 
     def __repr__(self):
         return self.name + ':' + str(self.hand)
